@@ -1,13 +1,14 @@
 package com.paddy.android.watertracker;
 
+import android.app.AlarmManager;
 import android.app.Application;
-import android.util.Log;
 
 public class WaterTrackerApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		long temporaryInterval = 5000L; // FIXME every 5 seconds
+		// FIXME pick the interval you actually want here
+		long temporaryInterval = AlarmManager.INTERVAL_HOUR;
 		HandlerNotifications.configureRepeatingAlarm(this, temporaryInterval);
 	}
 }
