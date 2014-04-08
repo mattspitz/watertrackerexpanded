@@ -14,8 +14,8 @@ public class HandlerNotifications extends IntentService {
 
 	public static final String TAG = "NH";
 
-	public HandlerNotifications(String name) {
-		super(name);
+	public HandlerNotifications() {
+		super(HandlerNotifications.class.getSimpleName());
 	}
 
 	public static void configureRepeatingAlarm(Context context, long interval) {
