@@ -47,8 +47,6 @@ public class HandlerNotifications extends IntentService {
 		stackBuilder.addNextIntent(intent);
 		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
-		resultPendingIntent.cancel();
-
 		notificationBuilder.setContentIntent(resultPendingIntent);
 
 		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
