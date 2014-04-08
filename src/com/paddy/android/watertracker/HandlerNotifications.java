@@ -1,6 +1,9 @@
 package com.paddy.android.watertracker;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
@@ -13,6 +16,16 @@ public class HandlerNotifications extends Service {
 
 	public static final String TAG = "NH";
 	private WakeLock mWakeLock;
+
+	public static void configureRepeatingAlarm(Context context, long interval) {
+		AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		Intent i = new Intent(context, HandlerNotifications.class);
+		PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
+		am.cancel(pi);
+
+		am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+				interval, interval, pi);
+	}
 
 	@Override
 	public IBinder onBind(Intent intent) {
