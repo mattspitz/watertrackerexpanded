@@ -7,40 +7,35 @@
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="19" />
-    
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    
+
     <application
+        android:name="com.paddy.android.watertracker.WaterTrackerApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name="com.paddy.android.watertracker.WaterTrackerApplication" >
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.paddy.android.watertracker.DrunkTodayActivity"
-            android:label="@string/app_name" 
-            android:launchMode="singleTask">
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.paddy.android.watertracker.WeekActivity"></activity>
+        <activity android:name="com.paddy.android.watertracker.WeekActivity" />
+
         <service android:name="com.paddy.android.watertracker.HandlerNotifications" />
-        <service
-            android:name="com.paddy.android.watertracker.CreatorNotifications"
-            android:launchMode="singleTask" >
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
-        </service>
-        <receiver android:name="com.paddy.android.watertracker.ReceiveBoot">
+
+        <receiver android:name="com.paddy.android.watertracker.ReceiveBoot" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-        </receiver>      
-    </application>  
-    
+        </receiver>
+    </application>
+
 </manifest>
